@@ -1,80 +1,80 @@
 dataset,column,description,data_type,module,source_inspiration
-priora_denial_risk_dataset_200000.csv,case_id,Synthetic case identifier,text/id,All,administrative key
-priora_denial_risk_dataset_200000.csv,payer_family,"High-level payer group such as Medicare Advantage, Commercial, Part D",categorical,Denial Risk,CMS/plan context
-priora_denial_risk_dataset_200000.csv,payer_name,Synthetic payer name family,categorical,"Denial Risk, Denial Reason",commercial payer policy context
-priora_denial_risk_dataset_200000.csv,plan_type,Plan type such as MA-HMO or Commercial-PPO,categorical,Denial Risk,CMS plan/formulary concepts
-priora_denial_risk_dataset_200000.csv,patient_age,Patient age with intentional rare dirty outliers,numeric,Denial Risk,synthetic patient demographics
-priora_denial_risk_dataset_200000.csv,age_group,Bucketed age group,categorical,Denial Risk,derived feature
-priora_denial_risk_dataset_200000.csv,provider_specialty,Provider specialty,categorical,Denial Risk,NPPES-inspired provider metadata
-priora_denial_risk_dataset_200000.csv,diagnosis_category,Broad condition category,categorical,All,clinical context
-priora_denial_risk_dataset_200000.csv,diagnosis_code,Synthetic ICD-10-like diagnosis code,text/code,Denial Risk,"ICD-10 structure inspired, not actual code guarantee"
-priora_denial_risk_dataset_200000.csv,request_type,"Medication, Imaging, Procedure, DME, Surgery, Therapy, Infusion",categorical,All,prior-auth service classes
-priora_denial_risk_dataset_200000.csv,procedure_code,Synthetic HCPCS-like service code,text/code,"Denial Risk, Denial Reason",HCPCS-like format only
-priora_denial_risk_dataset_200000.csv,ndc_code,Synthetic NDC-like code for medication requests,text/code,Denial Risk,NDC-like format only
-priora_denial_risk_dataset_200000.csv,site_of_care,Care site such as office/outpatient/home/pharmacy,categorical,Denial Risk,claims/EHR context
-priora_denial_risk_dataset_200000.csv,network_status,In network/out of network/unknown,categorical,Denial Risk,benefit eligibility logic
-priora_denial_risk_dataset_200000.csv,urgency,"Standard, Expedited, Urgent",categorical,Denial Risk,PA workflow urgency
-priora_denial_risk_dataset_200000.csv,prior_auth_required,Whether PA is required for this synthetic request,binary,Denial Risk,payer policy proxy
-priora_denial_risk_dataset_200000.csv,pa_form_submitted,Whether prior-auth form is submitted,binary,"Denial Risk, Completeness",PA submission checklist
-priora_denial_risk_dataset_200000.csv,clinical_note_present,Clinical note present flag,binary,"Denial Risk, Completeness",document completeness
-priora_denial_risk_dataset_200000.csv,diagnosis_code_present,Diagnosis code present flag,binary,"Denial Risk, Completeness",document completeness
-priora_denial_risk_dataset_200000.csv,procedure_code_present,Procedure/service code present flag,binary,"Denial Risk, Completeness",document completeness
-priora_denial_risk_dataset_200000.csv,lab_report_attached,Lab report attached flag,binary,"Denial Risk, Completeness",supporting documentation
-priora_denial_risk_dataset_200000.csv,referral_attached,Referral attached flag,binary,"Denial Risk, Completeness",supporting documentation
-priora_denial_risk_dataset_200000.csv,imaging_report_attached,Imaging report attached flag,binary,"Denial Risk, Completeness",supporting documentation
-priora_denial_risk_dataset_200000.csv,previous_treatment_history_included,Whether previous treatment history is included,binary,Denial Risk,medical necessity and step therapy
-priora_denial_risk_dataset_200000.csv,step_therapy_required,Whether synthetic formulary/policy requires step therapy,binary,Denial Risk,Part D formulary PA/ST/QL inspired
-priora_denial_risk_dataset_200000.csv,step_therapy_met,Whether step therapy is documented as met,binary,Denial Risk,Part D formulary PA/ST/QL inspired
-priora_denial_risk_dataset_200000.csv,quantity_limit_flag,Whether request is subject to quantity limit,binary,Denial Risk,Part D formulary PA/ST/QL inspired
-priora_denial_risk_dataset_200000.csv,quantity_limit_exceeded,Whether requested quantity exceeds limit,binary,Denial Risk,Part D formulary PA/ST/QL inspired
-priora_denial_risk_dataset_200000.csv,non_covered_flag,Whether item/service is treated as non-covered in synthetic policy,binary,Denial Risk,policy exclusion proxy
-priora_denial_risk_dataset_200000.csv,duplicate_request_flag,Duplicate administrative request flag,binary,Denial Risk,administrative denial pattern
-priora_denial_risk_dataset_200000.csv,coding_mismatch_flag,Diagnosis/procedure mismatch proxy,binary,Denial Risk,coverage code matching proxy
-priora_denial_risk_dataset_200000.csv,supporting_doc_count,Count of supporting documents attached,numeric,Denial Risk,derived document feature
-priora_denial_risk_dataset_200000.csv,required_condition_count,Synthetic count of required policy conditions,numeric,Denial Risk,policy complexity feature
-priora_denial_risk_dataset_200000.csv,missing_required_conditions,Synthetic count of missing conditions,numeric,"Denial Risk, Denial Reason",key denial driver
-priora_denial_risk_dataset_200000.csv,prior_denials_count,Past denial count for similar case/provider/patient,numeric,Denial Risk,history feature
-priora_denial_risk_dataset_200000.csv,policy_match_score,"0 to 1 approximate match to policy, with intentional dirty outliers",numeric,Denial Risk,policy matching proxy
-priora_denial_risk_dataset_200000.csv,note_completeness_score,"0 to 1 note completeness score, with intentional dirty outliers",numeric,Denial Risk,document completeness proxy
-priora_denial_risk_dataset_200000.csv,payer_policy_strictness,Synthetic payer strictness score 0 to 1,numeric,Denial Risk,payer variation proxy
-priora_denial_risk_dataset_200000.csv,requested_units,Requested units/days/visits,numeric,Denial Risk,claim/request feature
-priora_denial_risk_dataset_200000.csv,requested_amount_usd,Synthetic requested amount in USD with rare outliers,numeric,Denial Risk,claims-like amount feature
-priora_denial_risk_dataset_200000.csv,denial_probability_true_synthetic,Synthetic probability used to generate the label,numeric,Denial Risk,"for audit only, do not train on it"
-priora_denial_risk_dataset_200000.csv,denial_outcome,Target label Approved or Denied,target/categorical,Denial Risk,classifier target
-priora_denial_risk_dataset_200000.csv,detailed_denial_reason,Detailed synthetic denial reason or approved,target/categorical,Denial Risk,auxiliary label
-priora_denial_risk_dataset_200000.csv,project_denial_reason,Project-level denial reason class or approved,target/categorical,Denial Risk,mapped label
-priora_denial_reason_text_dataset_200000.csv,case_id,Synthetic denial reason case identifier,text/id,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,payer_name,Synthetic payer name,categorical,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,request_type,Type of requested service/drug,categorical,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,diagnosis_category,Broad condition category,categorical,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,service_code,Synthetic HCPCS-like service code,text/code,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,policy_id,Synthetic policy ID used in generated denial text,text/id,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,supporting_doc_count,Number of submitted supporting documents,numeric,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,missing_required_conditions,Count of missing required conditions,numeric,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,denial_text,Generated denial letter paragraph with realistic phrasing/noise,text,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,short_denial_summary,Short structured reason summary,text,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,policy_excerpt,Synthetic policy excerpt for context,text,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,detailed_denial_reason,Detailed reason label including step therapy/quantity/out-of-network,target/categorical,Denial Reason,denial notice/templates and payer policy language
-priora_denial_reason_text_dataset_200000.csv,project_reason_class,Mapped project-level reason label,target/categorical,Denial Reason,denial notice/templates and payer policy language
-priora_document_completeness_dataset_200000.csv,case_id,Synthetic document completeness case identifier,text/id,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,payer_family,High-level payer family,categorical,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,request_type,Type of request,categorical,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,diagnosis_category,Broad condition category,categorical,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,clinical_note_present,Clinical note present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,diagnosis_code_present,Diagnosis code present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,procedure_code_present,Procedure/service code present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,ndc_code_present,Drug code present flag for medication requests,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,lab_report_attached,Lab report attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,referral_attached,Referral attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,imaging_report_attached,Imaging report attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,medication_history_attached,Medication history attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,pa_form_signed,Prior authorization form signed/submitted flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,insurance_card_present,Insurance/benefit information present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,provider_npi_present,Provider NPI field present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,patient_demographics_complete,Patient demographic fields complete flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,policy_criteria_checked,Whether policy criteria checklist was reviewed,binary,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,required_fields_total,Total required fields for synthetic case,numeric,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,missing_required_fields_count,Number of required fields missing,numeric,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,total_documents_attached,Total number of documents attached with rare outliers,numeric,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,document_completeness_score_true_synthetic,Synthetic score used to generate label,numeric,Document Completeness,PA submission checklist and documentation completeness logic
-priora_document_completeness_dataset_200000.csv,completeness_label,Target label Complete or Incomplete,target/categorical,Document Completeness,PA submission checklist and documentation completeness logic
+denial_risk.csv,case_id,Synthetic case identifier,text/id,All,administrative key
+denial_risk.csv,payer_family,"High-level payer group such as Medicare Advantage, Commercial, Part D",categorical,Denial Risk,CMS/plan context
+denial_risk.csv,payer_name,Synthetic payer name family,categorical,"Denial Risk, Denial Reason",commercial payer policy context
+denial_risk.csv,plan_type,Plan type such as MA-HMO or Commercial-PPO,categorical,Denial Risk,CMS plan/formulary concepts
+denial_risk.csv,patient_age,Patient age with intentional rare dirty outliers,numeric,Denial Risk,synthetic patient demographics
+denial_risk.csv,age_group,Bucketed age group,categorical,Denial Risk,derived feature
+denial_risk.csv,provider_specialty,Provider specialty,categorical,Denial Risk,NPPES-inspired provider metadata
+denial_risk.csv,diagnosis_category,Broad condition category,categorical,All,clinical context
+denial_risk.csv,diagnosis_code,Synthetic ICD-10-like diagnosis code,text/code,Denial Risk,"ICD-10 structure inspired, not actual code guarantee"
+denial_risk.csv,request_type,"Medication, Imaging, Procedure, DME, Surgery, Therapy, Infusion",categorical,All,prior-auth service classes
+denial_risk.csv,procedure_code,Synthetic HCPCS-like service code,text/code,"Denial Risk, Denial Reason",HCPCS-like format only
+denial_risk.csv,ndc_code,Synthetic NDC-like code for medication requests,text/code,Denial Risk,NDC-like format only
+denial_risk.csv,site_of_care,Care site such as office/outpatient/home/pharmacy,categorical,Denial Risk,claims/EHR context
+denial_risk.csv,network_status,In network/out of network/unknown,categorical,Denial Risk,benefit eligibility logic
+denial_risk.csv,urgency,"Standard, Expedited, Urgent",categorical,Denial Risk,PA workflow urgency
+denial_risk.csv,prior_auth_required,Whether PA is required for this synthetic request,binary,Denial Risk,payer policy proxy
+denial_risk.csv,pa_form_submitted,Whether prior-auth form is submitted,binary,"Denial Risk, Completeness",PA submission checklist
+denial_risk.csv,clinical_note_present,Clinical note present flag,binary,"Denial Risk, Completeness",document completeness
+denial_risk.csv,diagnosis_code_present,Diagnosis code present flag,binary,"Denial Risk, Completeness",document completeness
+denial_risk.csv,procedure_code_present,Procedure/service code present flag,binary,"Denial Risk, Completeness",document completeness
+denial_risk.csv,lab_report_attached,Lab report attached flag,binary,"Denial Risk, Completeness",supporting documentation
+denial_risk.csv,referral_attached,Referral attached flag,binary,"Denial Risk, Completeness",supporting documentation
+denial_risk.csv,imaging_report_attached,Imaging report attached flag,binary,"Denial Risk, Completeness",supporting documentation
+denial_risk.csv,previous_treatment_history_included,Whether previous treatment history is included,binary,Denial Risk,medical necessity and step therapy
+denial_risk.csv,step_therapy_required,Whether synthetic formulary/policy requires step therapy,binary,Denial Risk,Part D formulary PA/ST/QL inspired
+denial_risk.csv,step_therapy_met,Whether step therapy is documented as met,binary,Denial Risk,Part D formulary PA/ST/QL inspired
+denial_risk.csv,quantity_limit_flag,Whether request is subject to quantity limit,binary,Denial Risk,Part D formulary PA/ST/QL inspired
+denial_risk.csv,quantity_limit_exceeded,Whether requested quantity exceeds limit,binary,Denial Risk,Part D formulary PA/ST/QL inspired
+denial_risk.csv,non_covered_flag,Whether item/service is treated as non-covered in synthetic policy,binary,Denial Risk,policy exclusion proxy
+denial_risk.csv,duplicate_request_flag,Duplicate administrative request flag,binary,Denial Risk,administrative denial pattern
+denial_risk.csv,coding_mismatch_flag,Diagnosis/procedure mismatch proxy,binary,Denial Risk,coverage code matching proxy
+denial_risk.csv,supporting_doc_count,Count of supporting documents attached,numeric,Denial Risk,derived document feature
+denial_risk.csv,required_condition_count,Synthetic count of required policy conditions,numeric,Denial Risk,policy complexity feature
+denial_risk.csv,missing_required_conditions,Synthetic count of missing conditions,numeric,"Denial Risk, Denial Reason",key denial driver
+denial_risk.csv,prior_denials_count,Past denial count for similar case/provider/patient,numeric,Denial Risk,history feature
+denial_risk.csv,policy_match_score,"0 to 1 approximate match to policy, with intentional dirty outliers",numeric,Denial Risk,policy matching proxy
+denial_risk.csv,note_completeness_score,"0 to 1 note completeness score, with intentional dirty outliers",numeric,Denial Risk,document completeness proxy
+denial_risk.csv,payer_policy_strictness,Synthetic payer strictness score 0 to 1,numeric,Denial Risk,payer variation proxy
+denial_risk.csv,requested_units,Requested units/days/visits,numeric,Denial Risk,claim/request feature
+denial_risk.csv,requested_amount_usd,Synthetic requested amount in USD with rare outliers,numeric,Denial Risk,claims-like amount feature
+denial_risk.csv,denial_probability_true_synthetic,Synthetic probability used to generate the label,numeric,Denial Risk,"for audit only, do not train on it"
+denial_risk.csv,denial_outcome,Target label Approved or Denied,target/categorical,Denial Risk,classifier target
+denial_risk.csv,detailed_denial_reason,Detailed synthetic denial reason or approved,target/categorical,Denial Risk,auxiliary label
+denial_risk.csv,project_denial_reason,Project-level denial reason class or approved,target/categorical,Denial Risk,mapped label
+denial_reason.csv,case_id,Synthetic denial reason case identifier,text/id,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,payer_name,Synthetic payer name,categorical,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,request_type,Type of requested service/drug,categorical,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,diagnosis_category,Broad condition category,categorical,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,service_code,Synthetic HCPCS-like service code,text/code,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,policy_id,Synthetic policy ID used in generated denial text,text/id,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,supporting_doc_count,Number of submitted supporting documents,numeric,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,missing_required_conditions,Count of missing required conditions,numeric,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,denial_text,Generated denial letter paragraph with realistic phrasing/noise,text,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,short_denial_summary,Short structured reason summary,text,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,policy_excerpt,Synthetic policy excerpt for context,text,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,detailed_denial_reason,Detailed reason label including step therapy/quantity/out-of-network,target/categorical,Denial Reason,denial notice/templates and payer policy language
+denial_reason.csv,project_reason_class,Mapped project-level reason label,target/categorical,Denial Reason,denial notice/templates and payer policy language
+info_inspector.csv,case_id,Synthetic document completeness case identifier,text/id,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,payer_family,High-level payer family,categorical,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,request_type,Type of request,categorical,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,diagnosis_category,Broad condition category,categorical,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,clinical_note_present,Clinical note present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,diagnosis_code_present,Diagnosis code present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,procedure_code_present,Procedure/service code present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,ndc_code_present,Drug code present flag for medication requests,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,lab_report_attached,Lab report attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,referral_attached,Referral attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,imaging_report_attached,Imaging report attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,medication_history_attached,Medication history attached flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,pa_form_signed,Prior authorization form signed/submitted flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,insurance_card_present,Insurance/benefit information present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,provider_npi_present,Provider NPI field present flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,patient_demographics_complete,Patient demographic fields complete flag,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,policy_criteria_checked,Whether policy criteria checklist was reviewed,binary,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,required_fields_total,Total required fields for synthetic case,numeric,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,missing_required_fields_count,Number of required fields missing,numeric,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,total_documents_attached,Total number of documents attached with rare outliers,numeric,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,document_completeness_score_true_synthetic,Synthetic score used to generate label,numeric,Document Completeness,PA submission checklist and documentation completeness logic
+info_inspector.csv,completeness_label,Target label Complete or Incomplete,target/categorical,Document Completeness,PA submission checklist and documentation completeness logic
