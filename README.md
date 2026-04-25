@@ -13,6 +13,7 @@ Machine Learning Models Used:
                                                 Our second model, which will utilize a group of decision trees for the complex, non-linear logic in medical claim denials, for better outcomes and accuracy.
 
 Why These Models are Suitable:
+
                               Logistic Regression: 
                                                   This is chosen for the first phase because it is simple, and generally good and reliable. In healthcare, understanding that a model thinks a claim might be denied is just as important as the prediction itself. It provides a clear mathematical floor.
 
