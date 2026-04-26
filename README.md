@@ -22,7 +22,6 @@ The main topic is to help healthcare administrative staff identify risky prior a
 # 2. Features / Columns in the Dataset
 
 Since Priora uses three classifiers, the dataset is divided into three related files.
-
 ---
 
 # A. Denial Risk Prediction Dataset
@@ -71,6 +70,30 @@ This dataset is used for the NLP module. Its purpose is to classify the likely r
 | `payer_type`            | Categorical                | Type of payer involved in the denial.                                                  |
 | `reason_class`          | Categorical / Target       | The target class showing the denial reason category.                                   |
 | `confidence_score`      | Numerical / Target Support | Confidence score associated with the predicted reason class.                           |
+
+
+
+# C. Document Completeness Prediction Dataset
+
+This dataset is used for the optional third classifier. The project document defines this module as predicting whether a prior authorization file is complete or incomplete before submission. Its input features include clinical note presence, diagnosis code presence, procedure code presence, lab report status, referral status, number of required fields missing, and total documents attached. 
+
+| Feature / Column                    | Data Type                  | Description                                                         |
+| ----------------------------------- | -------------------------- | ------------------------------------------------------------------- |
+| `case_id`                           | Text / Identifier          | Unique ID for each prior authorization file.                        |
+| `clinical_note_present`             | Categorical / Boolean      | Shows whether clinical note is included.                            |
+| `diagnosis_code_present`            | Categorical / Boolean      | Shows whether diagnosis code is present.                            |
+| `procedure_code_present`            | Categorical / Boolean      | Shows whether procedure code is present.                            |
+| `lab_report_attached`               | Categorical / Boolean      | Shows whether lab report is attached.                               |
+| `referral_attached`                 | Categorical / Boolean      | Shows whether referral document is attached.                        |
+| `imaging_report_attached`           | Categorical / Boolean      | Shows whether imaging report is attached.                           |
+| `medication_history_attached`       | Categorical / Boolean      | Shows whether medication or previous treatment history is attached. |
+| `number_of_required_fields_missing` | Numerical                  | Count of missing required fields in the submitted file.             |
+| `total_documents_attached`          | Numerical                  | Total number of documents attached in the file.                     |
+| `note_completeness_score`           | Numerical                  | Score showing completeness of the note or file.                     |
+| `file_status`                       | Categorical / Target       | Final class label: Complete or Incomplete.                          |
+| `completeness_score`                | Numerical / Target Support | Probability or score showing how complete the file is.              |
+
+---
 
 ## Denial Reason Classes
 
@@ -141,7 +164,8 @@ This model is suitable because the denial-reason task is a supervised multiclass
 Random Forest Classifier:
 This model is suitable because denial outcomes are often influenced by combinations of categorical and numeric conditions rather than a single linear pattern. Random Forest can capture more complex interactions across the structured features and may improve performance where tree-style decision logic matters.
 
-Report for Document Completeness Prediction:
+## Report for Document Completeness Prediction:
+
 Dataset Description:
 The dataset used for this phase is info_inspector.csv. It contains synthetic prior-authorization records focused on document completeness prediction. The data includes structured binary and numeric fields such as clinical_note_present, lab_report_attached, missing_required_fields_count, and total_documents_attached. The target label for the main task is completeness_label, which makes this a binary classification problem.
 
