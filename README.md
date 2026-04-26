@@ -140,3 +140,27 @@ This model is suitable because the denial-reason task is a supervised multiclass
 
 Random Forest Classifier:
 This model is suitable because denial outcomes are often influenced by combinations of categorical and numeric conditions rather than a single linear pattern. Random Forest can capture more complex interactions across the structured features and may improve performance where tree-style decision logic matters.
+
+Report for Document Completeness Prediction:
+Dataset Description:
+The dataset used for this phase is info_inspector.csv. It contains synthetic prior-authorization records focused on document completeness prediction. The data includes structured binary and numeric fields such as clinical_note_present, lab_report_attached, missing_required_fields_count, and total_documents_attached. The target label for the main task is completeness_label, which makes this a binary classification problem.
+
+Methodology:
+The initial exploration in info_inspector.ipynb shows that the dataset contains several missing values in the binary flag columns, which are handled by filling them with the mode (the most frequent value). Outliers in the numeric columns are addressed using the IQR capping method. After preprocessing, the categorical features will be encoded, and the dataset can be split into training and testing sets to evaluate model performance using accuracy, precision, recall, and F1-score.
+
+Machine Learning Models Used:
+For this project, we will be implementing two distinct models:
+
+Logistic Regression:
+Our initial model is used to establish an understanding of the linear relationships between the presence of specific documents, field counts, and the final output of document completeness as a binary result.
+
+Random Forest Classifier:
+Our second model, which will utilize a group of decision trees for the complex, non-linear logic in administrative checklist requirements, for better outcomes and accuracy.
+
+Why These Models Are Suitable:
+
+Logistic Regression:
+This is chosen for the first phase because it is simple, and generally good and reliable. Document completeness is a straightforward binary classification task, and this model provides a clear mathematical floor to identify which missing documents have the biggest linear impact on a file being flagged as incomplete.
+
+Random Forest Classifier:
+This model is suitable because administrative checklists often follow "Decision Tree" logic, where certain documents are only required if specific diagnosis criteria are met. The Random Forest captures these complex interactions across multiple categorical flags and numerical counts, allowing for a significant jump in accuracy and consistency.
