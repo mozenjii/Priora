@@ -108,15 +108,6 @@ This dataset is used for the optional third classifier. The project document def
 
 ---
 
-## Short Version for Direct Submission
-
-You can paste this if you want a smaller answer:
-
-The dataset used in this project is a synthetic healthcare prior authorization dataset created for **Priora: AI-Based Denial Risk and Denial Reason Prediction for Prior Authorization Workflows**. The domain is healthcare administration, specifically prior authorization requests, denial prediction, denial reason classification, and document completeness checking. Real prior authorization data is difficult to access because of privacy restrictions, so the dataset was created using synthetic case records, manually created structured samples, simulated denial letters, publicly inspired policy categories, and de-identified text templates. This follows the project methodology, which states that the system will use structured and text-based datasets for supervised classification and NLP tasks. 
-
-The main features include patient and case information, such as age, age group, gender, payer type, procedure type, diagnosis category, urgency level, number of supporting documents, missing required conditions, referral status, lab report status, previous treatment history, policy match score, and note completeness score. These are mainly numerical and categorical features used for the Denial Risk Predictor. The text-based dataset includes denial letter text, short denial summary, and case explanation text, which are used by the Denial Reason Classifier. The target class for this model is the denial reason category, such as missing documentation, medical necessity not established, prior authorization not obtained, non-covered service, coding or billing issue, and duplicate or miscellaneous. The optional Document Completeness Predictor uses features such as clinical note presence, diagnosis code presence, procedure code presence, lab report attached, referral attached, number of required fields missing, and total documents attached to predict whether the file is complete or incomplete.
-
-
 ## Report for Denial Risk Prediction:
 
 Dataset Description:
