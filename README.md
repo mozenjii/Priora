@@ -1,6 +1,6 @@
 ## 1. Dataset Description
 
-The dataset used for this project is a **synthetic healthcare prior authorization dataset** created for the project **Priora: AI-Based Denial Risk and Denial Reason Prediction for Prior Authorization Workflows**. The domain of the dataset is **healthcare administration**, specifically the prior authorization process where healthcare providers submit treatment, procedure, drug, imaging, or device requests to insurance payers for approval.
+The dataset used for this project is a **synthetic healthcare prior authorization dataset** created for the project **AuthSignal: AI-Based Denial Risk and Denial Reason Prediction for Prior Authorization Workflows**. The domain of the dataset is **healthcare administration**, specifically the prior authorization process where healthcare providers submit treatment, procedure, drug, imaging, or device requests to insurance payers for approval.
 
 The dataset was created because real prior authorization data is difficult to access due to healthcare privacy restrictions. Therefore, the project uses **synthetic case records, manually created structured samples, simulated denial letters, publicly inspired policy categories, and de-identified text templates**, which matches the data collection plan of the project. 
 
@@ -21,7 +21,7 @@ The main topic is to help healthcare administrative staff identify risky prior a
 
 # 2. Features / Columns in the Dataset
 
-Since Priora uses three classifiers, the dataset is divided into three related files.
+Since AuthSignal uses three classifiers, the dataset is divided into three related files.
 ---
 
 # A. Denial Risk Prediction Dataset
